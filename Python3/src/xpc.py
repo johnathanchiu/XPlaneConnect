@@ -158,10 +158,10 @@ class XPlaneConnect(object):
 
         # Read response
         resultBuf = self.readUDP()
-        if len(resultBuf) != 34:
+        if len(resultBuf) != 46:
             raise ValueError("Unexpected response length.")
 
-        result = struct.unpack(b"<4sxBfffffff", resultBuf)
+        result = struct.unpack(b"<4sxBdddffff", resultBuf)
         if result[0] != b"POSI":
             raise ValueError("Unexpected header: " + result[0])
 
@@ -305,7 +305,7 @@ class XPlaneConnect(object):
                 if len(value) > 255:
                     raise ValueError("value must have less than 256 items.")
                 fmt = "<B{0:d}sB{1:d}f".format(len(dref), len(value))
-                buffer += struct.pack(fmt.encode(), len(dref), dref.encode(), len(value), value)
+                buffer += struct.pack(fmt.encode(), len(dref), dref.encode(), len(value), *value)
             else:
                 fmt = "<B{0:d}sBf".format(len(dref))
                 buffer += struct.pack(fmt.encode(), len(dref), dref.encode(), 1, value)
@@ -419,6 +419,27 @@ class XPlaneConnect(object):
         else:
             buffer = struct.pack(("<4sxBB" + str(len(points)) + "f").encode(), b"WYPT", op, len(points), *points)
         self.sendUDP(buffer)
+
+    def sendCOMM(self, comm):
+        '''Sets the specified datarefs to the specified values.
+            Args:
+              drefs: A list of names of the datarefs to set.
+              values: A list of scalar or vector values to set.
+        '''
+        if comm == None:
+            raise ValueError("comm must be non-empty.")
+
+        buffer = struct.pack(b"<4sx", b"COMM")
+        if len(comm) == 0 or len(comm) > 255:
+            raise ValueError("comm must be a non-empty string less than 256 characters.")
+
+        # Pack message
+        fmt = "<B{0:d}s".format(len(comm))
+        buffer += struct.pack(fmt.encode(), len(comm), comm.encode())
+
+        # Send
+        self.sendUDP(buffer)
+
 
 
 class ViewType(object):
