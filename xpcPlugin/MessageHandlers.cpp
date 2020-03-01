@@ -66,6 +66,7 @@ namespace XPC
 			handlers.insert(std::make_pair("VIEW", MessageHandlers::HandleView));
 			handlers.insert(std::make_pair("GETC", MessageHandlers::HandleGetC));
 			handlers.insert(std::make_pair("GETP", MessageHandlers::HandleGetP));
+			handlers.insert(std::make_pair("COMM", MessageHandlers::HandleComm));
 			// X-Plane data messages
 			handlers.insert(std::make_pair("DSEL", MessageHandlers::HandleXPlaneData));
 			handlers.insert(std::make_pair("USEL", MessageHandlers::HandleXPlaneData));
@@ -558,8 +559,8 @@ namespace XPC
 		response[5] = (char)DataManager::GetInt(DREF_GearHandle, aircraft);
 		// TODO change lat/lon/h to double?
 		*((double*)(response + 6)) = DataManager::GetDouble(DREF_Latitude, aircraft);
-		*((double*)(response + 14)) = (float)DataManager::GetDouble(DREF_Longitude, aircraft);
-		*((double*)(response + 22)) = (float)DataManager::GetDouble(DREF_Elevation, aircraft);
+		*((double*)(response + 14)) = DataManager::GetDouble(DREF_Longitude, aircraft);
+		*((double*)(response + 22)) = DataManager::GetDouble(DREF_Elevation, aircraft);
 		*((float*)(response + 30)) = DataManager::GetFloat(DREF_Pitch, aircraft);
 		*((float*)(response + 34)) = DataManager::GetFloat(DREF_Roll, aircraft);
 		*((float*)(response + 38)) = DataManager::GetFloat(DREF_HeadingTrue, aircraft);
@@ -822,6 +823,32 @@ namespace XPC
 		}
 		
 		return 1;
+	}
+
+
+	void MessageHandlers::HandleComm(const Message& msg)
+	{
+		Log::FormatLine(LOG_TRACE, "COMM", "Request to execute COMM command received (Conn %i)", connection.id);
+		const unsigned char* buffer = msg.GetBuffer();
+		std::size_t size = msg.GetSize();
+		std::size_t pos = 5;
+		while (pos < size)
+		{
+			unsigned char len = buffer[pos++];
+			if (pos + len > size)
+			{
+				break;
+			}
+			std::string comm = std::string((char*)buffer + pos, len);
+			pos += len;
+
+			DataManager::Execute(comm);
+			Log::FormatLine(LOG_DEBUG, "COMM", "Execute command %s", comm.c_str());
+		}
+		if (pos != size)
+		{
+			Log::WriteLine(LOG_ERROR, "COMM", "ERROR: Command did not terminate at the expected position.");
+		}
 	}
 
 	void MessageHandlers::HandleWypt(const Message& msg)
