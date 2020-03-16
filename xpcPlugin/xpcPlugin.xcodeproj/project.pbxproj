@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D0F44CE21C6D3E7008A0655 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D0F44CD21C6D3E7008A0655 /* Timer.cpp */; };
+		A17757F9241EF98A00890E8C /* XPLM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17757F8241EF98A00890E8C /* XPLM.framework */; };
+		A17757FD241EF99A00890E8C /* XPWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17757FC241EF99A00890E8C /* XPWidgets.framework */; };
 		BE37D960187C8B0F0033B082 /* XPCPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE37D95E187C8B0F0033B082 /* XPCPlugin.cpp */; };
 		BE8361EF18C5591C00E9C923 /* mac.xpl in CopyFiles */ = {isa = PBXBuildFile; fileRef = D607B19909A556E400699BC3 /* mac.xpl */; };
 		BEABAD371AE041A3007BA7DA /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEABAD2B1AE041A3007BA7DA /* DataManager.cpp */; };
@@ -19,8 +21,6 @@
 		BEDC620418EDF1A7005DB364 /* xplaneConnect.c in Sources */ = {isa = PBXBuildFile; fileRef = BEDC620218EDF1A7005DB364 /* xplaneConnect.c */; };
 		D6A7BDAA16A1DEA200D1426A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A7BDA916A1DEA200D1426A /* OpenGL.framework */; };
 		D6A7BDC116A1DEC000D1426A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A7BDC016A1DEC000D1426A /* CoreFoundation.framework */; };
-		D6A7BDF116A1DED200D1426A /* XPLM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A7BDF016A1DED200D1426A /* XPLM.framework */; };
-		D6A7BDF316A1DED200D1426A /* XPWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A7BDF216A1DED200D1426A /* XPWidgets.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +39,8 @@
 /* Begin PBXFileReference section */
 		3D0F44CC21C6D3E7008A0655 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		3D0F44CD21C6D3E7008A0655 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		A17757F8241EF98A00890E8C /* XPLM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XPLM.framework; path = SDK/Libraries/Mac/XPLM.framework; sourceTree = "<group>"; };
+		A17757FC241EF99A00890E8C /* XPWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XPWidgets.framework; path = SDK/Libraries/Mac/XPWidgets.framework; sourceTree = "<group>"; };
 		BE37D95E187C8B0F0033B082 /* XPCPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XPCPlugin.cpp; sourceTree = SOURCE_ROOT; usesTabs = 1; };
 		BEABAD2B1AE041A3007BA7DA /* DataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataManager.cpp; sourceTree = "<group>"; };
 		BEABAD2C1AE041A3007BA7DA /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
@@ -57,8 +59,6 @@
 		D607B19909A556E400699BC3 /* mac.xpl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mac.xpl; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A7BDA916A1DEA200D1426A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D6A7BDC016A1DEC000D1426A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		D6A7BDF016A1DED200D1426A /* XPLM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XPLM.framework; path = SDK/Libraries/Mac/XPLM.framework; sourceTree = "<group>"; };
-		D6A7BDF216A1DED200D1426A /* XPWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XPWidgets.framework; path = SDK/Libraries/Mac/XPWidgets.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,8 @@
 			files = (
 				D6A7BDAA16A1DEA200D1426A /* OpenGL.framework in Frameworks */,
 				D6A7BDC116A1DEC000D1426A /* CoreFoundation.framework in Frameworks */,
-				D6A7BDF116A1DED200D1426A /* XPLM.framework in Frameworks */,
-				D6A7BDF316A1DED200D1426A /* XPWidgets.framework in Frameworks */,
+				A17757FD241EF99A00890E8C /* XPWidgets.framework in Frameworks */,
+				A17757F9241EF98A00890E8C /* XPLM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,10 +128,10 @@
 		D6A7BDAD16A1DEA700D1426A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A17757FC241EF99A00890E8C /* XPWidgets.framework */,
+				A17757F8241EF98A00890E8C /* XPLM.framework */,
 				D6A7BDC016A1DEC000D1426A /* CoreFoundation.framework */,
 				D6A7BDA916A1DEA200D1426A /* OpenGL.framework */,
-				D6A7BDF016A1DED200D1426A /* XPLM.framework */,
-				D6A7BDF216A1DED200D1426A /* XPWidgets.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -313,6 +313,10 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
 				CONFIGURATION_BUILD_DIR = ./XPlaneConnect/;
 				CURRENT_PROJECT_VERSION = 0.24;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Libraries/Mac",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = NO;
@@ -355,6 +359,10 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
 				CONFIGURATION_BUILD_DIR = ./XPlaneConnect/;
 				CURRENT_PROJECT_VERSION = 0.24;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Libraries/Mac",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = NO;
